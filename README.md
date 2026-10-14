@@ -1,4 +1,4 @@
-# Modular Calculator Mini-Program
+# Modular Calculator Mini-Program with Input Validation
 
 def add_numbers(num1, num2):
     return num1 + num2
@@ -14,9 +14,17 @@ def divide_numbers(num1, num2):
         return "Cannot divide by zero."
     return num1 / num2
 
-# A. Input
-num1 = float(input("Enter first number: "))
-num2 = float(input("Enter second number: "))
+# Helper function to ensure the user only enters valid numbers (no letters or symbols)
+def get_valid_number(prompt):
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Invalid input! Please enter numbers only (no letters or symbols).")
+
+# A. Input with validation
+num1 = get_valid_number("Enter first number: ")
+num2 = get_valid_number("Enter second number: ")
 
 print("\nChoose operation:")
 print("1 - Addition")
